@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-unbound
+  namespace: network
+spec:
+  selector:
+    app: unbound
+  type: ClusterIP
+  clusterIP: 10.43.7.211  #We cannot use hostname in pi-hole configuration
+  ports:
+    - name: port53tcp
+      port: 5335
+      targetPort: 53
+      protocol: TCP
+    - name: port53udp
+      port: 5335
+      targetPort: 53
+      protocol: UDP
