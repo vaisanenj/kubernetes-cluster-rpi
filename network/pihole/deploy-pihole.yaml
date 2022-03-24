@@ -20,20 +20,15 @@ spec:
           - name: TZ
             valueFrom:
               configMapKeyRef:
-                name: pihole-cm
+                name: cm-pihole
                 key: TZ
-          - name: DNS1
+          - name: PIHOLE_DNS_
             valueFrom:
               configMapKeyRef:
-                name: pihole-cm
-                key: DNS1
-          - name: DNS2
-            valueFrom:
-              configMapKeyRef:
-                name: pihole-cm
-                key: DNS2
+                name: cm-pihole
+                key: DNS
           - name: WEBPASSWORD
             valueFrom:
               configMapKeyRef:
-                name: pihole-cm
+                name: cm-pihole
                 key: WEBPASSWORD

@@ -9,7 +9,7 @@ spec:
   selector:
     app: pihole
   type: LoadBalancer
-  loadBalancerIP: <LoadBalancerIP>
+  loadBalancerIP: 192.168.68.223
   ports:
     - name: port80tcp
       port: 80
@@ -24,14 +24,14 @@ apiVersion: v1
 kind: Service
 metadata:
   name: svc-pihole-udp
-  namespace: pihole
+  namespace: network
   annotations:
     metallb.universe.tf/allow-shared-ip: "pihole-shared-ip"
 spec:
   selector:
     app: pihole
   type: LoadBalancer
-  loadBalancerIP: <LoadBalancerIP>
+  loadBalancerIP: 192.168.68.223
   ports:
     - name: port53udp
       port: 53

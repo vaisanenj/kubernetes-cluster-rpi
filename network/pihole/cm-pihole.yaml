@@ -5,6 +5,5 @@ metadata:
   namespace: network
 data:
   TZ: "Europe/Helsinki"
-  DNS1: "8.8.8.8"
-  DNS2: "8.8.4.4"
-  WEBPASSWORD: "<WEBPASSWORD>"
+  DNS: "10.43.7.211#5335"
+  WEBPASSWORD: "passu123"
