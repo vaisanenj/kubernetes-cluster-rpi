@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: cm-pihole
-  namespace: network
+  namespace: security
 data:
   TZ: "Europe/Helsinki"
   DNS: "10.43.7.211#5335"

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: svc-tcp-pihole
-  namespace: network
+  namespace: security
   annotations:
     metallb.universe.tf/allow-shared-ip: "pihole-shared-ip"
 spec:
@@ -24,7 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: svc-pihole-udp
-  namespace: network
+  namespace: security
   annotations:
     metallb.universe.tf/allow-shared-ip: "pihole-shared-ip"
 spec:
