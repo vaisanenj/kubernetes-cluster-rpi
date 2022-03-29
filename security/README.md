@@ -1,10 +1,8 @@
-### Pihole - [Offical website](https://pi-hole.net/)
+### Pihole
 Pihole is an open-source DNS based filtering sulotion that focus blocking ads and malicious domains before your devices can even connect to them. Pihole alose increases performance by blocking unwanted advertisements.
 [Boost your network security with pihole](https://air-gap.com.au/boost-your-network-security-with-pi-hole/)
 
-Pihole has it's own offical images that you can use [Hub Docker](https://hub.docker.com/r/pihole/pihole)
-I Created my own image which I am using currently you can find it in my github repository: [vaisanenj GitHub](https://github.com/vaisanenj/Dockerfiles/tree/main/vaisanenj_pihole)
-If you look Dockerfile content you see that it only adds more adlists and regex match to block. You can always add PersistentVolume to Pihole and configure adlists in there. In my case I created new one to learn how to create Docker Images.
+In my deploy-pihole.yaml file I added extra command and arguments for container. With these arguments I am able to add add lists and regex matches to expand pihole default blocklist.
 
 ### Unbound 
 In Pihole website they have great article about unbound and how it increase your security.
