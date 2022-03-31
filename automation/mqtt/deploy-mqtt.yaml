@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mqtt
+  namespace: automation
+spec:
+  selector:
+    matchLabels:
+      app: mqtt
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mqtt
+    spec:
+      volumes:
+        - name: cm-volume
+          configMap:
+            name: cm-mqtt
+      containers:
+        - name: mqtt
+          image: eclipse-mosquitto:2.0
+          volumeMounts:
+            - name: cm-volume
+              mountPath: /mosquitto/config
+
