@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-plexserver-media
+  namespace: media
+spec:
+  resources:
+    requests:
+      storage: 100Gi
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  accessModes:
+    - ReadWriteOnce
+  volumeName: pv-plexserver-media
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-plexserver-config
+  namespace: media
+spec:
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set
+  accessModes:
+    - ReadWriteOnce
+  volumeName: pv-plexserver-config

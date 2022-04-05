@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plexserver
+spec:
+  selector:
+    matchLabels:
+      app: plexserver
+  template:
+    metadata:
+      labels:
+        app: plexserver
+    spec:
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: pvc-plexserver-media
+        - name: config
+          persistentVolumeClaim:
+            claimName: pvc-plexserver-config
+      containers:
+        - name: plexserver
+          image: linuxserver/plex:1.25.8
+          env:
+          - name: PUID
+            value: "1000"
+          - name: PGID
+            value: "1000"
+          - name: VERSION
+            value: Docker
+          volumeMounts:
+            - mountPath: /media
+              name: storage 
+            - mountPath: /config
+              name: config
