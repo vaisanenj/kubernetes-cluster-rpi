@@ -9,5 +9,5 @@ spec:
     - ReadWriteOnce
   storageClassName: ""
   nfs:
-    path: /mnt/nfsshare/K8s/zigbee2mqtt
-    server: 192.168.68.201
+    path: /mnt/nfsshare/zigbee2mqtt
+    server: 192.168.68.240
