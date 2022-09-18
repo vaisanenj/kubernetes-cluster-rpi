@@ -3,13 +3,10 @@ kind: Service
 metadata:
   name: svc-zigbee2mqtt
   namespace: automation
-  annotations:
-    metallb.universe.tf/allow-shared-ip: "automation-shared-ip"
 spec:
   selector:
     app: zigbee2mqtt
-  type: LoadBalancer
-  loadBalancerIP: 192.168.68.222
+  type: ClusterIP
   ports:
     - name: zigbee2mqtt
       port: 8080

@@ -1,0 +1,39 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-automation
+  namespace: automation
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - host: mqtt.lan
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-mqtt
+            port:
+              number: 1883
+  - host: hassio.lan
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-homeassistant
+            port:
+              number: 8123
+  - host: zigbee2mqtt.lan
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: svc-zigbee2mqtt
+            port:
+              number: 8080

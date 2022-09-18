@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pvc-homeassistant
+  name: pvc-automation
   namespace: automation
 spec:
   resources:
@@ -9,5 +9,5 @@ spec:
       storage: 5Gi
   storageClassName: ""
   accessModes:
-    - ReadWriteOnce
-  volumeName: pv-homeassistant
+    - ReadWriteMany
+  volumeName: pv-nfs-automation

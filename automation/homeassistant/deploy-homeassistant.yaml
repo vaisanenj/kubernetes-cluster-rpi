@@ -15,10 +15,11 @@ spec:
       volumes:
         - name: storage
           persistentVolumeClaim:
-            claimName: pvc-homeassistant
+            claimName: pvc-automation
       containers:
         - name: homeassistant
           image: homeassistant/home-assistant:2022.3
           volumeMounts:
             - mountPath: /config
-              name: storage 
+              subPath: homeassistant
+              name: storage

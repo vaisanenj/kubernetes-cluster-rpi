@@ -3,13 +3,10 @@ kind: Service
 metadata:
   name: svc-homeassistant
   namespace: automation
-  annotations:
-    metallb.universe.tf/allow-shared-ip: "automation-shared-ip"
 spec:
   selector:
     app: homeassistant
-  type: LoadBalancer
-  loadBalancerIP: 192.168.68.222
+  type: ClusterIP
   ports:
     - name: http
       port: 8123

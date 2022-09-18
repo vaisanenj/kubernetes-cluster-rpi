@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appdaemon
+  namespace: automation
+spec:
+  selector:
+    matchLabels:
+      app: appdaemon
+  template:
+    metadata:
+      labels:
+        app: appdaemon
+    spec:
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: pvc-automation
+      containers:
+        - name: appdaemon
+          image: acockburn/appdaemon
+          env:
+            - name: TZ
+              value: Europe/Helsinki
+            - name: HA_URL
+              value: http://svc-homeassistant:8123
+            - name: TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: appdaemon-hassio-token
+                  key: TOKEN
+          volumeMounts:
+            - mountPath: /conf
+              subPath: appdaemon
+              name: storage 

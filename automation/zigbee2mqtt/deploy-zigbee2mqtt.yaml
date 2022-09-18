@@ -26,6 +26,7 @@ spec:
               mountPath: /run/udev
             - name: data
               mountPath: /app/data
+              subPath: zigbee2mqtt
       volumes:
         - name: ttyacm
           hostPath:
@@ -37,5 +38,5 @@ spec:
           hostPath:
             path: /run/udev
         - name: data
-          hostPath:
-            path: /home/pi/k8s/zigbee2mqtt
+          persistentVolumeClaim:
+            claimName: pvc-automation
