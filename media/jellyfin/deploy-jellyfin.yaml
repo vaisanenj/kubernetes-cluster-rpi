@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  selector:
+    matchLabels:
+      app: jellyfin
+  template:
+    metadata:
+      labels:
+        app: jellyfin
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: kmaster
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: pvc-media
+      - name: media
+        hostPath:
+          path: /mnt/smb
+      containers:
+        - name: jellyfin
+          image: jellyfin/jellyfin
+          env:
+          - name: TZ
+            value: Europe/Helsinki
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              subPath: jellyfin
+            - name: media
+              mountPath: /data
